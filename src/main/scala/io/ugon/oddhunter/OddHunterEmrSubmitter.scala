@@ -71,7 +71,7 @@ object OddHunterEmrSubmitter extends OddHunterArgsParser with OddHunterSolver wi
         parsedArgs(OutputArgKey)
       )
 
-    val sparkStep: StepConfig = new StepConfig().withName("Example Step")
+    val sparkStep: StepConfig = new StepConfig().withName("OddHunter Step")
       .withActionOnFailure("CONTINUE")
       .withHadoopJarStep(sparkStepConf);
 

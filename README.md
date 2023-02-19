@@ -48,14 +48,14 @@ Parsing of args and using config files rather than program arguments could be im
 
 ## Usage
 
-###Local
+### Local
 ```
 sbt "runMain io.ugon.oddhunter.OddHunterLocalSolver --input <S3_LOCATION> --output <S3_LOCATION> --aws-profile <AWS_PROFILE>" 
 ```
 Or use `--aws-use-default-provider-chain` instead of `--aws-profile <AWS_PROFILE>`
 
 
-###EMR
+### EMR
 1. Build jar for submitting to EMR
 ```
 sbt package
