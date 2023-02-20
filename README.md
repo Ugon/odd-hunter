@@ -11,7 +11,7 @@ to an S3 bucket.
 Run you app both locally and on Amazon EMR.
 
 ### Solution description
-Let's note that the problem comes down to grouping the input by key, and then for each group finding the value that 
+The problem comes down to grouping the input by key, and then for each group finding the value that 
 exists an odd number of times. Since values are integers we can do that by reducing each group to a single integer 
 (the result) with a bitwise XOR operation - even occurrences of integers will cancel out and only the number that appeared
 odd number of times will be left.
