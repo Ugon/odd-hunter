@@ -20,7 +20,8 @@ Let's note that bitwise XOR operation on integers is commutative and associative
 
 #### Time complexity
 Time complexity of this solution is O(N), where N is the number of key->value pairs in input. We need to go through the
-entire dataset only once. This cannot be improved, because we need to examine each pair.
+entire dataset once to do the grouping. We then need to go through each group once to perform the XOR reduction, but the total
+number of values in all groups is N, so that is O(N) as well. This O(N) result cannot be improved, because we need to examine each pair.
 
 #### Space complexity
 Space complexity of this solution is O(K), where K is the number of unique keys in input. Finding the result of each 
@@ -31,7 +32,7 @@ takes O(N) space, but that is still linear space.
 #### Data distribution and shuffling
 We have no knowledge of the data other than its format, so there is no input for considering data-locality optimizations. 
 To solve the problem shuffle transformation is required, because values for given key may be scattered across different 
-partitions. We use the `reduceByKey`, which under the hood reduces groups locally first, and only after that 
+partitions. We use the `reduceByKey` transformation, which under the hood reduces groups locally first, and only after that 
 it shuffles the data for the final reduction step - this reduces the amount of data that needs to be sent across the network. 
 This optimization will be:
 * more effective if there are fewer keys with multiple values
@@ -40,7 +41,7 @@ This optimization will be:
 * less effective when keys are scattered randomly across all partitions
  
 #### Build process, jar packaging
-As this is a toy project the build and deployment processes are not optimized. Improvements that could be made include 
+As this is a toy project build and deployment processes are not optimized. Improvements that could be made include 
 producing smaller jar files (eg. jar that is sent to EMR does not need to include all 3 Main objects) and automating the 
 process. Creating ephemeral EMR cluster and tearing it down after the job is finished could also be considered.
 

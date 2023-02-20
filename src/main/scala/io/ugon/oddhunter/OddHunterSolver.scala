@@ -2,8 +2,6 @@ package io.ugon.oddhunter
 
 import org.apache.spark.SparkContext
 
-import scala.collection.JavaConverters.asScalaIteratorConverter
-
 trait OddHunterSolver {
 
   private val CommaOrTabRegex = "[,\t]"
@@ -26,6 +24,7 @@ trait OddHunterSolver {
 
       // for each key determine the value that occurs odd number of times.
       // XOR will cancel out all even occurrences and for each key leave just the odd result.
+      // this transformation should start reducing locally before shuffling the partially reduced data.
       .reduceByKey(_ ^ _)
 
       // format pairs into TSV

@@ -35,8 +35,8 @@ object OddHunterEmrSubmitter extends OddHunterArgsParser with OddHunterSolver wi
       println(s"Conflicting $AWSUseDefaultProviderChainArgKey and $AWSProfileArgKey params - exactly one must be provided")
     } else {
       submitJob(parsedArgs)
-
     }
+
   }
 
   private def submitJob(parsedArgs: Map[String, String]): Unit = {
